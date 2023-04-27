@@ -12,10 +12,7 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/recipe")
-public class RecipRessource {
-
-    RecipeService recipeService = new RecipeService();
-
+public class RecipRessource {    RecipeService recipeService = new RecipeService();
 
     @GET
     @Produces(value = MediaType.APPLICATION_JSON)
@@ -35,6 +32,38 @@ public class RecipRessource {
             return Response
                     .status(Response.Status.FOUND)
                     .entity(recipe)
+                    .build();
+        } else {
+            return Response
+                    .status(Response.Status.NOT_FOUND)
+                    .build();
+        }
+    }
+    @GET
+    @Path("/{title}")
+    @Produces(value = MediaType.APPLICATION_JSON)
+    public Response getByTitle(@PathParam("title") String title){
+        List<Recipe> recipes = recipeService.findByTitle(title);
+        if (recipes.size() != 0) {
+            return Response
+                    .status(Response.Status.FOUND)
+                    .entity(recipes)
+                    .build();
+        } else {
+            return Response
+                    .status(Response.Status.NOT_FOUND)
+                    .build();
+        }
+    }
+    @GET
+    @Path("/{ingredients}")
+    @Produces(value = MediaType.APPLICATION_JSON)
+    public Response getByIngredients(@PathParam("ingredients") String ingredients){
+        List<Recipe> recipes = recipeService.findByIngredients(ingredients);
+        if (recipes.size() != 0) {
+            return Response
+                    .status(Response.Status.FOUND)
+                    .entity(recipes)
                     .build();
         } else {
             return Response
