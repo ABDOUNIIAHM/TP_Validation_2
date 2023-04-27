@@ -19,10 +19,10 @@
 <div class="col-6 offset-3">
     <h1>Login</h1>
 
-    <form action="${pageContext.request.contextPath}/login" method="post">
+    <form action="login" method="post">
         <div class="form-group mb-2">
-            <label for="username">Username</label>
-            <input type="text" id="username" class="form-control" name="username" placeholder="Enter username">
+            <label for="username">Email</label>
+            <input type="email" id="username" class="form-control" name="email" placeholder="Enter email">
         </div>
         <div class="form-group mb-2">
             <label for="password">Password</label>
@@ -32,8 +32,10 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
 
-        <c:if test="${login_error}">
-            <div>Bad credentials</div>
+        <c:if test="${error != null}">
+            <div class="alert alert-danger w-25 p-3" role="alert">
+                    ${error}
+            </div>
         </c:if>
 
     </form>
