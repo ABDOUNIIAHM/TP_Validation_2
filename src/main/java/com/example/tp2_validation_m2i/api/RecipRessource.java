@@ -12,7 +12,9 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/recipe")
-public class RecipRessource {    RecipeService recipeService = new RecipeService();
+public class RecipRessource {
+
+    RecipeService recipeService = new RecipeService();
 
     @GET
     @Produces(value = MediaType.APPLICATION_JSON)

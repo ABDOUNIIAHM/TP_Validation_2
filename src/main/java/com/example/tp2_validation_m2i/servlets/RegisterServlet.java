@@ -18,7 +18,6 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("WEB-INF/sign-up.jsp").forward(req,resp);
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -37,11 +36,5 @@ public class RegisterServlet extends HttpServlet {
             userService.create(user);
             resp.sendRedirect(getServletContext().getContextPath()+"/login");
         }
-
-
-
-
-
-
     }
 }

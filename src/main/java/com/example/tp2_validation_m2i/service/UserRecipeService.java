@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRecipeService {
-
     private static UserRecipeDao userRecipeDao = new UserRecipeDao();
     Connection connection = ConnectionManager.getInstance();
     IntRecipeDao recipeDao = new RecipeDao();
@@ -31,12 +30,10 @@ public class UserRecipeService {
                 recipes.add(recipe);
             }
         }catch (SQLException e){
-
             e.printStackTrace();
         }
         return recipes;
     }
-
     public UserRecipe create(UserRecipe userRecipe){
         return userRecipeDao.create(userRecipe);
     }

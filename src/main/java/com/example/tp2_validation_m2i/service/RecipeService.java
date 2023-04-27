@@ -12,6 +12,7 @@ import java.util.List;
 
 public class RecipeService {
     private IntRecipeDao recipeDao = new RecipeDao();
+    private UserRecipeService userRecipeService = new UserRecipeService();
     Connection connection = ConnectionManager.getInstance();
     private Recipe mapToRecipe(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("id");
@@ -48,10 +49,12 @@ public class RecipeService {
             e.printStackTrace();
         }
     }
-
     public List<Recipe> findByTitle(String title){
         List<Recipe> recipes = new ArrayList<>();
-        String query = "SELECT * FROM recipe WHERE title LIKE ?";
+        String query = "SELECT * FROM recipe r" +
+                " INNER JOIN user_recipes ur ON r.id=ur.idRecipe" +
+                " INNER JOIN user u ON u.id = ur.idUser" +
+                " WHERE r.title LIKE ?";
 
         try (PreparedStatement ps = connection.prepareStatement(query)){
             ps.setString(1,"%"+title+"%");
@@ -67,7 +70,10 @@ public class RecipeService {
     }
     public List<Recipe> findByIngredients(String ingredients){
         List<Recipe> recipes = new ArrayList<>();
-        String query = "SELECT * FROM recipe WHERE ingredients LIKE ?";
+        String query = "SELECT * FROM recipe r" +
+                " INNER JOIN user_recipes ur ON r.id=ur.idRecipe" +
+                " INNER JOIN user u ON u.id = ur.idUser" +
+                " WHERE r.ingredients LIKE ?";
         try (PreparedStatement ps = connection.prepareStatement(query)){
             ps.setString(1,"%"+ingredients+"%");
             ResultSet rs = ps.executeQuery();

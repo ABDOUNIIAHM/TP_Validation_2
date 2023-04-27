@@ -37,8 +37,13 @@
                     ${error}
             </div>
         </c:if>
-
     </form>
+    <form action="signup">
+        <div class="form-group mb-2">
+            <button type="submit" class="btn btn-primary">Signup</button>
+        </div>
+    </form>
+
 </div>
 </div>
 <c:import url="footer.jsp"></c:import>

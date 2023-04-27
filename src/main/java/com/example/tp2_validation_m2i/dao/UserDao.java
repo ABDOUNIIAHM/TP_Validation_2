@@ -83,7 +83,7 @@ public class UserDao implements IntUserDao{
 
     @Override
     public void update(User entity) {
-        String query = "UPDATE user SET firstName=?,lastName=?,email=?, password=?, imgUrl=?) WHERE id=?";
+        String query = "UPDATE user SET firstName=?,lastName=?,email=?, password=?, imgUrl=? WHERE id=?";
         try(PreparedStatement prepareStatement = connection.prepareStatement(query)){
 
             prepareStatement.setString(1, entity.getFirstName());

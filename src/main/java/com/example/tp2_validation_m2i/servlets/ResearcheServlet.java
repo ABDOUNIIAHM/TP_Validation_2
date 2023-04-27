@@ -19,13 +19,20 @@ public class ResearcheServlet extends HttpServlet {
         String criteria = req.getParameter("search");
         List<Recipe> foundRecipes = null;
         if(criteria.equals("title")){
-            String title = req.getParameter("research");
+            String title = req.getParameter("title");
+            System.out.println(title);
             foundRecipes = recipeService.findByTitle(title);
         }else{
-            String ingredients = req.getParameter("research");
+            String ingredients = req.getParameter("ingredients");
             foundRecipes = recipeService.findByIngredients(ingredients);
         }
-        req.setAttribute("foundPosts",foundRecipes);
+        System.out.println("foundrecipes : "+foundRecipes);
+        req.setAttribute("foundRecipes",foundRecipes);
         req.getRequestDispatcher("/WEB-INF/researched-recipes.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
     }
 }

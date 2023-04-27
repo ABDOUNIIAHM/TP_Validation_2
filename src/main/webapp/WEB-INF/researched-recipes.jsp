@@ -17,22 +17,11 @@
 <body>
 <c:import url="header.jsp"></c:import>
 <div class="container">
-  <h1>Posts</h1>
-  <form action="researched-recipes">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search by title..." name="title">
-      <button class="btn btn-outline-secondary" type="submit" name="search" value="title" >Search</button>
-    </div>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search by ingredients..." name="ingredients">
-      <button class="btn btn-outline-secondary" type="submit" name="search" value="ingredients">Search</button>
-    </div>
-  </form>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 align-content-center">
     <c:forEach var="p" items="${foundRecipes}">
       <div class="col">
         <div class="card">
-          <img src="${p.imgUrl}" class="card-img-top" alt="${p.title}">
+          <img src="${p.imgUrl}" class="card-img-top">
           <div class="card-body">
             <h5 class="card-title">${p.title}</h5>
             <p class="card-text">${p.description}</p>
