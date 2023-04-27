@@ -26,10 +26,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <p>&copy; 2023 Your Company Name</p>
+                <p>&copy; 2023 The company</p>
             </div>
             <div class="col-md-6 text-end">
-                <p>Designed by <a href="#">Your Name</a></p>
+                <p>Designed by <a href="#">Aracados</a></p>
             </div>
         </div>
     </div>

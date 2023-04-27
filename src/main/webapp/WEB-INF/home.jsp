@@ -21,12 +21,10 @@
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Search by title..." name="title">
             <button class="btn btn-outline-secondary" type="submit" name="search" value="title" >Search</button>
-        </div>
-    </form>
-    <form action="researched-recipes" method="get">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search by ingredients..." name="ingredients">
-            <button class="btn btn-outline-secondary" type="submit" name="search" value="ingredients">Search</button>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search by ingredients..." name="ingredients">
+                <button class="btn btn-outline-secondary" type="submit" name="search" value="ingredients">Search</button>
+            </div>
         </div>
     </form>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 align-content-center">
@@ -37,6 +35,11 @@
                 <div class="card-body">
                     <h5 class="card-title">${recipe.title}</h5>
                     <p class="card-text">${recipe.description}</p>
+                </div>
+                <div class="card-footer">
+                    <form action="recipe-detail">
+                        <button class="btn btn-outline-secondary" type="submit" name="detail" value="${recipe.id}">Detail</button>
+                    </form>
                 </div>
             </div>
         </div>
